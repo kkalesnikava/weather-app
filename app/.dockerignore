@@ -1,0 +1,4 @@
+docs/
+.env.example
+Dockerfile
+skaffold.yaml

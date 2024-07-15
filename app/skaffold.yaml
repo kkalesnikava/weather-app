@@ -1,0 +1,22 @@
+apiVersion: skaffold/v4beta10
+kind: Config
+metadata:
+  name: weather
+build:
+  artifacts:
+    - image: localhost/weather
+  local:
+    push: false
+deploy:
+  helm:
+    releases:
+      - name: weather
+        chartPath: ../helm/weather
+        createNamespace: true
+        namespace: app
+        valuesFiles:
+          - ../helm/weather/values.yaml
+        setValueTemplates:
+          image.repository: "{{.IMAGE_REPO_localhost_weather}}"
+          image.tag: "{{.IMAGE_TAG_localhost_weather}}@{{.IMAGE_DIGEST_localhost_weather}}"
+        version: 1.0.0
