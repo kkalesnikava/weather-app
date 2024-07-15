@@ -3,9 +3,9 @@
 replicaCount: 2
 
 image:
-  repository: ghcr.io/kkalesnikava/weather-app
+  repository: localhost/weather
   pullPolicy: IfNotPresent
-  tag: v1.0.0
+  tag: 1.0.0
 
 imagePullSecrets: []
 nameOverride: ""
